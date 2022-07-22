@@ -28,11 +28,14 @@ def pip_install(package_name: str) -> None:
     for s in location.stdout.decode("utf-8").splitlines():
         if "Location:" in s:
             sys.path.append(s.split(" ")[1])
+            print(location.stdout.decode("utf-8"))
 
 
 def main() -> None:
+    print(sys.path)
     pip_install("psutil")
     pip_install("pynvml")
+    print(sys.path)
     import psutil  # type: ignore[import]
     import pynvml  # type: ignore[import]
 
